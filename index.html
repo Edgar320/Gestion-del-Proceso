@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskMaster</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Modal de bienvenida -->
+  <div id="welcome-modal" class="modal">
+    <div class="modal-content">
+      <h2 class="user-greeting">¡Hola! ¿Cuál es tu nombre?</h2>
+      <input type="text" id="user-name" placeholder="Ingresa tu nombre">
+      <button id="start-btn">Entrar</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>¡Hola, <span id="user-greeting"></span>!</h1>
+    <h2 class="current-text"> ¿Listo para planear tu día?</h2>
+
+    <p id="current-date"></p>
+
+    <!-- Botón para crear nueva tarea -->
+    <button id="toggle-inputs">+ Crear nueva tarea</button>
+
+    <!-- Inputs para agregar tarea -->
+    <div class="task-input hidden">
+      <input type="text" id="task-title" placeholder="Título de la tarea">
+      <textarea id="task-description" placeholder="Descripción de la tarea"></textarea>
+      <select id="category">
+        <option value="Urgente">Urgente</option>
+        <option value="Normal">Normal</option>
+        <option value="Baja">Baja</option>
+      </select>
+      <input type="date" id="due-date">
+      <button id="add-task">Añadir tarea</button>
+    </div>
+
+    <!-- Lista de tareas -->
+    <div class="task-list">
+      <div class="task-category">
+        <h2>En progreso</h2>
+        <div class="tasks" id="in-progress-tasks"></div>
+      </div>
+      <div class="task-category">
+        <h2>Completadas</h2>
+        <div class="tasks" id="completed-tasks"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
