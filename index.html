@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaskMaster</title>
-  <link rel="stylesheet" href="style.css">
+  <title>TaskMaster Pro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <!-- Modal de bienvenida -->
   <div id="welcome-modal" class="modal">
     <div class="modal-content">
-      <h2 class="user-greeting">¡Hola! ¿Cuál es tu nombre?</h2>
+      <h2>¡Bienvenido a TaskMaster Pro!</h2>
+      <p style="color: #666; margin-bottom: 20px;">¿Cuál es tu nombre?</p>
       <input type="text" id="user-name" placeholder="Ingresa tu nombre">
-      <button id="start-btn">Entrar</button>
+      <button id="start-btn">Comenzar</button>
     </div>
   </div>
 
+  <!-- Notificación -->
+  <div id="notification" class="notification">
+    <h4 id="notif-title"></h4>
+    <p id="notif-message"></p>
+  </div>
+
   <div class="container">
-    <h1>¡Hola, <span id="user-greeting"></span>!</h1>
-    <h2 class="current-text"> ¿Listo para planear tu día?</h2>
+    <div class="header">
+      <h1>¡Hola, <span id="user-greeting">Usuario</span>! 👋</h1>
+      <h2>¿Listo para conquistar tu día?</h2>
+      <p id="current-date"></p>
+    </div>
 
-    <p id="current-date"></p>
+    <!-- Estadísticas -->
+    <div class="stats">
+      <div class="stat-card">
+        <span class="number" id="total-tasks">0</span>
+        <span class="label">Total</span>
+      </div>
+      <div class="stat-card">
+        <span class="number" id="progress-count">0</span>
+        <span class="label">En progreso</span>
+      </div>
+      <div class="stat-card">
+        <span class="number" id="completed-count">0</span>
+        <span class="label">Completadas</span>
+      </div>
+    </div>
 
-    <!-- Botón para crear nueva tarea -->
-    <button id="toggle-inputs">+ Crear nueva tarea</button>
+    <!-- Controles -->
+    <div class="controls">
+      <button id="toggle-inputs">+ Crear nueva tarea</button>
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="Urgente">Urgentes</button>
+      <button class="filter-btn" data-filter="Normal">Normales</button>
+      <button class="filter-btn" data-filter="Baja">Bajas</button>
+    </div>
 
-    <!-- Inputs para agregar tarea -->
-    <div class="task-input hidden">
+    <!-- Inputs para agregar/editar tarea -->
+    <div class="task-input" id="task-input">
       <input type="text" id="task-title" placeholder="Título de la tarea">
       <textarea id="task-description" placeholder="Descripción de la tarea"></textarea>
       <select id="category">
-        <option value="Urgente">Urgente</option>
-        <option value="Normal">Normal</option>
-        <option value="Baja">Baja</option>
+        <option value="Urgente">🔴 Urgente</option>
+        <option value="Normal">🟡 Normal</option>
+        <option value="Baja">🟢 Baja</option>
       </select>
       <input type="date" id="due-date">
       <button id="add-task">Añadir tarea</button>
@@ -43,16 +71,16 @@
     <!-- Lista de tareas -->
     <div class="task-list">
       <div class="task-category">
-        <h2>En progreso</h2>
+        <h2>📋 En progreso</h2>
         <div class="tasks" id="in-progress-tasks"></div>
       </div>
       <div class="task-category">
-        <h2>Completadas</h2>
+        <h2>✅ Completadas</h2>
         <div class="tasks" id="completed-tasks"></div>
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
-
 </html>
